@@ -1,25 +1,31 @@
 <!DOCTYPE HTML>
 <html lang="en-US">
+  <head>
     <title>
-        Sign Up The Collective
+      Sign Up The Collective
     </title>
-    <p> Sign up to create your profile</p>
-      <div class = "Sign Up form">
-        <form action="/signup" method="POST">
-            <label for="username">Username:</label><br>
-            <input type="text" id="username" name="username" required><br><br>
-            <label for="password">Password:</label><br>
-            <input type="password" id="password" name="password" required><br><br>
-            <input type="submit" value="Sign Up">
-        </div>
-       </p>
-       <p>Already have an Account?</p>
-       <Nav>
+
+    <link rel="stylesheet" href="css/signup.css" type="text/css">
+  </head>
+      <div class="sign-up-container">
+        <h1>THE PARLOR COLLECTIVE</h1>
+        <div class="form">
+          <p> Sign up to create your profile</p>
+          <form action="/signup" method="POST">
+              <input type="text" id="username" name="username" class="input" placeholder="Username" required><br><br>
+              <input type="text" id="email" name="email" class="input" placeholder="Email" required><br><br>
+              <input type="password" id="password" name="password" class="input" placeholder="Password"><br><br>
+              <input type="password" id="password-confirm" name="password-confirm" class="input" placeholder="Confirm Password"><br><br>
+              <input type="submit" value="Sign Up" class="submit">
+          </div>
+
+          <p>Already have an Account?</p>
+          <Nav>
               <ul>
                 <li><a href="The Artist.html"> The Artist</a></li>
                 <li><a href="The Canvas.html"> The Canvas</a></li>
                 <li><a href="The Parlor.html"> The Parlor</a></li>
               </ul>
-       </Nav>
-    </p>
+          </Nav>
+      </div>
 </html>
