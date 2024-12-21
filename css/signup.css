@@ -83,14 +83,13 @@
     width: 75px;
     height: 75px;
     background-color: wheat;
-    border-radius: 5px;
+    border-radius: 20px;
     margin-top: 0%;
     cursor: pointer;
     text-transform: uppercase;
     border-style: none;
 
     padding: 2%;
-    margin: 2%;
 }
 
 
@@ -119,7 +118,10 @@
 
 .account-buttons-container
 {
-    display: flex;
+    
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    gap: 20px;
     justify-content: center;
 
 }
