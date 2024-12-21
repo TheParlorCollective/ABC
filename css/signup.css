@@ -4,9 +4,14 @@
     font-family: "Trebuchet MS", sans-serif;
 }
 
+.head
+{
+    background-color: lightblue;
+}
+
 .sign-up-container
 {
-    background-color: red;
+    background-color: rgb(88, 88, 214);
     padding: 5px;
     width: 50%;
     margin: 0 auto;
@@ -33,14 +38,13 @@
 .form
 {
     padding: 2%;
-    background-color: yellow;
     margin: auto;
     text-align: center;
 }
 
 .input
 {
-    background-color: purple;
+    background-color: rgb(141, 151, 240);
     border-style: none;
     width: 50%;
     height: 50px;
@@ -61,7 +65,7 @@
     width: 20%;
     height: 30px;
     border-radius: 5px;
-    background-color: tan;
+    background-color: rgb(171, 186, 235);
     margin: 1%;
     cursor: pointer;
     text-transform: uppercase;
@@ -82,7 +86,7 @@
 {
     width: 75px;
     height: 75px;
-    background-color: wheat;
+    background-color: rgb(171, 186, 235);
     border-radius: 20px;
     margin-top: 0%;
     cursor: pointer;
@@ -105,7 +109,6 @@
 
 .existing-account
 {
-    background-color: green;
     padding: 1%;
     margin: auto;
     text-align: center;
