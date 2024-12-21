@@ -12,20 +12,20 @@
         <div class="form">
           <p> Sign up to create your profile</p>
           <form action="/signup" method="POST">
-              <input type="text" id="username" name="username" class="input" placeholder="Username" required><br><br>
-              <input type="text" id="email" name="email" class="input" placeholder="Email" required><br><br>
-              <input type="password" id="password" name="password" class="input" placeholder="Password"><br><br>
-              <input type="password" id="password-confirm" name="password-confirm" class="input" placeholder="Confirm Password"><br><br>
+              <img src="images/user.svg" class="icon"><input type="text" id="username" name="username" class="input" placeholder="Username" required><br><br>
+              <img src="images/email.svg" class="icon"><input type="text" id="email" name="email" class="input" placeholder="Email" required><br><br>
+              <img src="images/pass.svg" class="icon"><input type="password" id="password" name="password" class="input" placeholder="Password"><br><br>
+              <img src="images/pass.svg" class="icon"><input type="password" id="password-confirm" name="password-confirm" class="input" placeholder="Confirm Password"><br><br>
               <input type="submit" value="Sign Up" class="submit">
+          </form>
+              <div class="existing-account">
+                <p>Already have an Account?</p>
+                <div class="account-buttons-container">
+                  <a href="The Artist.html"><button class="account-button"><img src="images/artist.svg">Artist</button></a>
+                  <a href="The Canvas.html"><button class="account-button"><img src="images/canvas.svg">Canvas</button></a>
+                  <a href="The Canvas.html"><button class="account-button"><img src="images/parlor.svg">Parlor</button></a>
+                </div>
+              </div>
           </div>
-
-          <p>Already have an Account?</p>
-          <Nav>
-              <ul>
-                <li><a href="The Artist.html"> The Artist</a></li>
-                <li><a href="The Canvas.html"> The Canvas</a></li>
-                <li><a href="The Parlor.html"> The Parlor</a></li>
-              </ul>
-          </Nav>
       </div>
 </html>
