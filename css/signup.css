@@ -4,32 +4,36 @@
     font-family: "Trebuchet MS", sans-serif;
 }
 
-.head
+body
 {
-    background-color: lightblue;
+    background-image: linear-gradient(135deg, rgba(40,35,204,1) 0%, rgba(110,107,196,1) 50%, rgba(191,191,212,1) 100%);
 }
 
 .sign-up-container
 {
-    background-color: rgb(88, 88, 214);
+    background-color: white;
     padding: 5px;
     width: 50%;
     margin: 0 auto;
-    justify-content: center;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 8px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .sign-up-container h1
 {
-    color: white;
+    color: black;
     text-align: center;
 }
 
 .sign-up-container p
 {
-    color: blue;
+    color: black;
+    font-weight: bold;
     text-align: center;
     margin-top: 0;
     text-transform: uppercase;
