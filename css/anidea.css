@@ -1,0 +1,51 @@
+*
+{
+    font-family: "Trebuchet MS", sans-serif;
+}
+
+.idea-title
+{
+
+}
+
+.idea-title h1
+{
+    margin: 0px;
+}
+
+.idea-title p
+{
+    margin-top: 0px;
+    font-style: italic;
+}
+
+.main-container
+{
+    width: 80%;
+    background-color: lightgrey;
+    padding: 10px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.purpose h2
+{
+    margin: 0px;
+}
+
+.purpose p
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.collective h2
+{
+    margin-bottom: 0px;
+}
+
+.collective p
+{
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
