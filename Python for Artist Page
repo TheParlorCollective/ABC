@@ -1,0 +1,87 @@
+from flask import Flask, render_template, request, redirect, url_for
+from flask_sqlalchemy import SQLAlchemy
+from flask_wtf import FlaskForm
+from wtforms import StringField, TextAreaField, IntegerField
+from wtforms.validators import InputRequired
+from flask_login import LoginManager, UserMixin, login_user, login_required, current_user, logout_user
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///portfolio.db'
+app.config['SECRET_KEY'] = 'your_secret_key'
+db = SQLAlchemy(app)
+
+login_manager = LoginManager(app)
+login_manager.login_view = "login"
+
+# Models
+class User(UserMixin, db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(120), nullable=False)
+
+class Artist(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    bio = db.Column(db.Text, nullable=False)
+    certifications = db.Column(db.Text, nullable=True)
+    styles = db.Column(db.String(100), nullable=False)
+    portfolio_images = db.Column(db.String(500))  # Paths to images
+
+class Review(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    rating = db.Column(db.Integer, nullable=False)
+    comment = db.Column(db.Text, nullable=False)
+    artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'), nullable=False)
+    artist = db.relationship('Artist', backref=db.backref('reviews', lazy=True))
+
+class Parlor(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    address = db.Column(db.String(200), nullable=False)
+    artist_id = db.Column(db.Integer, db.ForeignKey('artist.id'))
+    artist = db.relationship('Artist', backref=db.backref('parlor', uselist=False))
+
+# Forms
+class ReviewForm(FlaskForm):
+    rating = IntegerField('Rating', validators=[InputRequired()])
+    comment = TextAreaField('Comment', validators=[InputRequired()])
+
+class ContactForm(FlaskForm):
+    name = StringField('Name', validators=[InputRequired()])
+    email = StringField('Email', validators=[InputRequired()])
+    message = TextAreaField('Message', validators=[InputRequired()])
+
+# Routes
+@app.route('/')
+def index():
+    return render_template('index.html', artists=Artist.query.all())
+
+@app.route('/artist/<int:id>')
+def artist_profile(id):
+    artist = Artist.query.get_or_404(id)
+    return render_template('artist_profile.html', artist=artist)
+
+@app.route('/review/<int:id>', methods=['GET', 'POST'])
+def review(id):
+    artist = Artist.query.get_or_404(id)
+    form = ReviewForm()
+    if form.validate_on_submit():
+        review = Review(rating=form.rating.data, comment=form.comment.data, artist_id=id)
+        db.session.add(review)
+        db.session.commit()
+        return redirect(url_for('artist_profile', id=id))
+    return render_template('review_form.html', form=form, artist=artist)
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    form = ContactForm()
+    if form.validate_on_submit():
+        # Handle contact form submission, like sending an email or saving to DB
+        return redirect(url_for('index'))
+    return render_template('contact.html', form=form)
+
+# User Authentication (Login/Logout) routes can go here
+
+if __name__ == '__main__':
+    db.create_all()  # Create database tables if they don't exist
+    app.run(debug=True)
